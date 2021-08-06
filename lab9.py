@@ -57,3 +57,5 @@ print(np.cos(my_list))
 print(np.log(my_list))
 print(np.sum(my_list))
 print(np.std(my_list))
+
+print("hello")
