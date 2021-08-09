@@ -18,10 +18,4 @@ plt.ylabel('No. of Calories', fontsize=8)
 plt.xticks(ps.index, index, fontsize=10, rotation=90)
 plt.title('1900 - 1910')
 plt.bar(ps.index, ps.values)
-plt.show()
-
-"""for column in data[['Calories']]:
-    columnValues = data[column]
-    print(column)
-    print(columnValues.values)"""
-    
+plt.show()\
