@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import xlrd
 # Install 'python3 -m pip install --user xlrd'
 
-
 data = pd.read_excel("dataNew.xls")
 data1 = data["Period"].str.split(" ", n = 1, expand = True)
 newData = data.assign(Years = data1[1])
@@ -20,8 +19,9 @@ newData2 = newData.loc[(newData.Years >= 1911) & (newData.Years <= 1920)]
 newData3 = newData.loc[(newData.Years >= 1921) & (newData.Years <= 1930)] 
 
 def first():
-    print("Total: ", newData1["Calories"].sum())
-    print("Mean: ", newData1["Calories"].mean())
+    print("First:")
+    print("Total: ", round(newData1["Calories"].sum(), 2))
+    print("Mean: ", round(newData1["Calories"].mean(), 2))
     ps = newData1['Calories'].sort_values(ignore_index=True)
     index = newData1['Years']
     plt.xlabel('Year', fontsize=5)
@@ -34,8 +34,9 @@ def first():
 
 
 def second():
-    print("Total: ", newData2["Calories"].sum())
-    print("Mean: ", newData2["Calories"].mean())
+    print("Second:")
+    print("Total: ", round(newData2["Calories"].sum(), 2))
+    print("Mean: ", round(newData2["Calories"].mean(), 2))
     ps = newData2['Calories'].sort_values(ignore_index=True)
     index = newData2['Years']
     plt.xlabel('Year', fontsize=5)
@@ -48,8 +49,9 @@ def second():
 
 
 def third():
-    print("Total: ", newData3["Calories"].sum())
-    print("Mean: ", newData3["Calories"].mean())
+    print("Third:")
+    print("Total: ", round(newData3["Calories"].sum(), 2))
+    print("Mean: ", round(newData3["Calories"].mean(), 2))
     ps = newData3["Calories"].sort_values(ignore_index=True)
     index = newData3['Years']
     plt.xlabel('Year', fontsize=5)
@@ -61,7 +63,7 @@ def third():
     plt.show()
 
 
-if __name__ == "__main__":
-    first()
-    second()
-    third() 
+first()
+second()
+third()
+    
