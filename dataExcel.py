@@ -3,15 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import xlrd
 # Install 'python3 -m pip install --user xlrd'
+
+
 data = pd.read_excel("dataNew.xls")
 data['Period'] = data['Period'].str.replace('Jan', '')
 data["Period"] = data["Period"].astype(int)
-
-
-
 #data = data[(data["Period"] >= 1900) & (data["Period"] <= 1910)]
 data = data.loc[(data.Period >= 1900) & (data.Period <= 1910)]
-print(data)
+print("Total: ", data["Calories"].sum())
+print("Mean: ", data["Calories"].mean())
 ps = data['Calories']
 index = data['Period']
 plt.xlabel('Year', fontsize=5)
@@ -26,7 +26,8 @@ data = pd.read_excel("dataNew.xls")
 data['Period'] = data['Period'].str.replace('Jan', '')
 data["Period"] = data["Period"].astype(int)
 data = data.loc[(data.Period > 1910) & (data.Period <= 1920)]
-print(data)
+print("Total: ", data["Calories"].sum())
+print("Mean: ", data["Calories"].mean())
 ps = data['Calories']
 index = data['Period']
 plt.xlabel('Year', fontsize=5)
@@ -40,8 +41,10 @@ plt.show()
 data = pd.read_excel("dataNew.xls")
 data['Period'] = data['Period'].str.replace('Jan', '')
 data["Period"] = data["Period"].astype(int)
+# data["Period"].to_numeric()
 data = data[(data["Period"] > 1920) & (data["Period"] <= 1930)]
-print(data)
+print("Total: ", data["Calories"].sum())
+print("Mean: ", data["Calories"].mean())
 ps = data['Calories']
 index = data['Period']
 plt.xlabel('Year', fontsize=5)
