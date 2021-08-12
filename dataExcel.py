@@ -6,34 +6,42 @@ import xlrd
 
 
 data = pd.read_excel("dataNew.xls")
-data['Period'] = data['Period'].str.replace('Jan', '')
-data["Period"] = data["Period"].astype(int)
-#data = data[(data["Period"] >= 1900) & (data["Period"] <= 1910)]
-data = data.loc[(data.Period >= 1900) & (data.Period <= 1910)]
-#data = data.loc[(data.Period >= 1911) & (data.Period <= 1920)]
-#data = data[(data["Period"] > 1920) & (data["Period"] <= 1930)]
+data1 = data["Period"].str.split(" ", n = 1, expand = True)
+newData = data.assign(Years = data1[1])
+newData["Years"] = newData["Years"].astype(int)
+"""
+moveColumn = newData.pop("Years")
+newData.insert(0, 'Years', moveColumn) """
+del newData["Period"]
+print(newData)
+
+
+newData_sorted = newData.sort_values(by=["Calories"], ascending=True)
+newData1 = newData.loc[(newData.Years >= 1900) & (newData.Years <= 1910)]
+newData2 = newData.loc[(newData.Years >= 1911) & (newData.Years <= 1920)]
+newData3 = newData.loc[(newData.Years >= 1921) & (newData.Years <= 1930)] 
+
 
 def first():
-    print("Total: ", data["Calories"].sum())
-    print("Mean: ", data["Calories"].mean())
-    ps = data['Calories']
-    index = data['Period']
+    print("Total: ", newData1["Calories"].sum())
+    print("Mean: ", newData1["Calories"].mean())
+    newData_sorted = newData.sort_values(by="Calories", ascending=True)
+    ps = newData1['Calories']
+    index = newData1['Years']
     plt.xlabel('Year', fontsize=5)
     plt.ylabel('No. of Calories', fontsize=8)
-    plt.xticks(ps.index, index, fontsize=10, rotation=90)
+    plt.xticks(newData_sorted.index, index, fontsize=10, rotation=90)
     plt.title('1900 - 1910')
-    plt.bar(ps.index, ps.values)
+    plt.bar(newData_sorted.index, newData_sorted.values)
     plt.savefig("1900 - 1910")
     plt.show()
 
 
-
-
-def seoncd():
-    print("Total: ", data["Calories"].sum())
-    print("Mean: ", data["Calories"].mean())
-    ps = data['Calories']
-    index = data['Period']
+def second():
+    print("Total: ", newData2["Calories"].sum())
+    print("Mean: ", newData2["Calories"].mean())
+    ps = newData2['Calories']
+    index = newData2['Years']
     plt.xlabel('Year', fontsize=5)
     plt.ylabel('No. of Calories', fontsize=8)
     plt.xticks(ps.index, index, fontsize=10, rotation=90)
@@ -44,10 +52,10 @@ def seoncd():
 
 
 def third():
-    print("Total: ", data["Calories"].sum())
-    print("Mean: ", data["Calories"].mean())
-    ps = data['Calories']
-    index = data['Period']
+    print("Total: ", newData3["Calories"].sum())
+    print("Mean: ", newData3["Calories"].mean())
+    ps = newData3["Calories"]
+    index = newData3['Years']
     plt.xlabel('Year', fontsize=5)
     plt.ylabel('No. of Calories', fontsize=8)
     plt.xticks(ps.index, index, fontsize=10, rotation=90)
@@ -57,6 +65,7 @@ def third():
     plt.show()
 
 
-
 if __name__ == "__main__":
     first()
+    second()
+    third() 
