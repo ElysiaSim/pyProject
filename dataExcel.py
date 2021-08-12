@@ -9,6 +9,9 @@ data = pd.read_excel("dataNew.xls")
 data['Period'] = data['Period'].str.replace('Jan', '')
 data["Period"] = data["Period"].astype(int)
 #data = data[(data["Period"] >= 1900) & (data["Period"] <= 1910)]
+
+
+
 data = data.loc[(data.Period >= 1900) & (data.Period <= 1910)]
 print("Total: ", data["Calories"].sum())
 print("Mean: ", data["Calories"].mean())
@@ -19,13 +22,13 @@ plt.ylabel('No. of Calories', fontsize=8)
 plt.xticks(ps.index, index, fontsize=10, rotation=90)
 plt.title('1900 - 1910')
 plt.bar(ps.index, ps.values)
+plt.savefig("1900 - 1910")
 plt.show()
 
 
-data = pd.read_excel("dataNew.xls")
-data['Period'] = data['Period'].str.replace('Jan', '')
-data["Period"] = data["Period"].astype(int)
-data = data.loc[(data.Period > 1910) & (data.Period <= 1920)]
+
+"""
+data = data.loc[(data.Period >= 1911) & (data.Period <= 1920)]
 print("Total: ", data["Calories"].sum())
 print("Mean: ", data["Calories"].mean())
 ps = data['Calories']
@@ -35,14 +38,13 @@ plt.ylabel('No. of Calories', fontsize=8)
 plt.xticks(ps.index, index, fontsize=10, rotation=90)
 plt.title('1911 - 1920')
 plt.bar(ps.index, ps.values)
+plt.savefig("1911 - 1920")
 plt.show()
 
 
-data = pd.read_excel("dataNew.xls")
-data['Period'] = data['Period'].str.replace('Jan', '')
-data["Period"] = data["Period"].astype(int)
-# data["Period"].to_numeric()
+
 data = data[(data["Period"] > 1920) & (data["Period"] <= 1930)]
+print(data)
 print("Total: ", data["Calories"].sum())
 print("Mean: ", data["Calories"].mean())
 ps = data['Calories']
@@ -52,4 +54,5 @@ plt.ylabel('No. of Calories', fontsize=8)
 plt.xticks(ps.index, index, fontsize=10, rotation=90)
 plt.title('1921 - 1930')
 plt.bar(ps.index, ps.values)
-plt.show()
+plt.savefig("1921 - 1930")
+plt.show() """
