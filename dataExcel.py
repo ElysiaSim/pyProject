@@ -13,19 +13,20 @@ newData.insert(0, 'Years', moveColumn) """
 del newData["Period"]
 print(newData)
 
-newData1 = newData.loc[(newData.Years >= 1900) & (newData.Years <= 1910)]
+newData1 = newData.loc[(newData.Years >= 1900) & (newData.Years <= 1902)]
 newData2 = newData.loc[(newData.Years >= 1911) & (newData.Years <= 1920)]
 newData3 = newData.loc[(newData.Years >= 1921) & (newData.Years <= 1930)] 
 
 def first():
+    print(newData1.head(3))
     print("First:")
     print("Total: ", round(newData1["Calories"].sum(), 2))
     print("Mean: ", round(newData1["Calories"].mean(), 2))
-    ps = newData1['Calories'].sort_values(ignore_index=True, ascending= False)
+    ps = newData1['Calories'].sort_values(ignore_index=True)
     index = newData1['Years']
-    plt.xlabel('Year', fontsize=5)
+    plt.xlabel('Year', fontsize=13)
     plt.ylabel('No. of Calories', fontsize=8)
-    plt.xticks(ps.index, index, fontsize=10, rotation=90)
+    plt.xticks(ps.index, index, fontsize=13, rotation=0)
     plt.title('1900 - 1910')
     plt.bar(ps.index, ps.values)
     plt.savefig("1900 - 1910")
@@ -63,5 +64,3 @@ def third():
 
 
 first()
-
-    
