@@ -12,7 +12,7 @@ moveColumn = newData.pop("Years")
 newData.insert(0, 'Years', moveColumn) """
 del newData["Period"]
 print(newData)
-
+# newData1 = newData[(newData["Years"] >= 1900) & (newData["Years"] <= 1910)]
 newData1 = newData.loc[(newData.Years >= 1900) & (newData.Years <= 1902)]
 newData2 = newData.loc[(newData.Years >= 1911) & (newData.Years <= 1920)]
 newData3 = newData.loc[(newData.Years >= 1921) & (newData.Years <= 1930)] 
