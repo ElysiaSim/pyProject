@@ -21,7 +21,7 @@ def first():
     print("First:")
     print("Total: ", round(newData1["Calories"].sum(), 2))
     print("Mean: ", round(newData1["Calories"].mean(), 2))
-    ps = newData1['Calories'].sort_values(ignore_index=True, ascending= False)
+    ps = newData1['Calories'].sort_values(ignore_index=True)
     index = newData1['Years']
     plt.xlabel('Year', fontsize=5)
     plt.ylabel('No. of Calories', fontsize=8)
@@ -63,5 +63,6 @@ def third():
 
 
 first()
-
+second()
+third()
     
