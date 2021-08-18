@@ -14,7 +14,7 @@ newData.insert(0, 'Years', moveColumn) """
 del newData["Period"]
 print(newData)
 # newData1 = newData[(newData["Years"] >= 1900) & (newData["Years"] <= 1910)]
-newData1 = newData.loc[(newData.Years >= str(1900)) & (newData.Years <= str(1910))]
+newData1 = newData.loc[(newData.Years >= str(1900)) & (newData.Years <= str(19010))]
 newData2 = newData.loc[(newData.Years >= str(1911)) & (newData.Years <= str(1920))]
 newData3 = newData.loc[(newData.Years >= str(1921)) & (newData.Years <= str(1930))] 
 
@@ -23,7 +23,7 @@ def first():
     print("First:")
     print("Total: ", round(newData1["Calories"].sum(), 2))
     print("Mean: ", round(newData1["Calories"].mean(), 2))
-    y = newData1['Calories'].sort_values(ascending= True)
+    y = newData1['Calories'].sort_values(ascending= False)
     x = np.arange(len(y.index))
     plt.xlabel('Year', fontsize=13)
     plt.ylabel('No. of Calories', fontsize=8)
@@ -33,12 +33,11 @@ def first():
     plt.savefig("1900 - 1910")
     plt.show()
 
-
 def second():
     print("Second:")
     print("Total: ", round(newData2["Calories"].sum(), 2))
     print("Mean: ", round(newData2["Calories"].mean(), 2))
-    ps = newData2['Calories'].sort_values(ignore_index=True)
+    ps = newData2['Calories'].sort_values(ignore_index=False)
     index = newData2['Years']
     plt.xlabel('Year', fontsize=5)
     plt.ylabel('No. of Calories', fontsize=8)
@@ -47,13 +46,13 @@ def second():
     plt.bar(ps.index, ps.values)
     plt.savefig("1911 - 1920")
     plt.show()
-
+    
 
 def third():
     print("Third:")
     print("Total: ", round(newData3["Calories"].sum(), 2))
     print("Mean: ", round(newData3["Calories"].mean(), 2))
-    ps = newData3["Calories"].sort_values(ignore_index=True)
+    ps = newData3["Calories"].sort_values(ignore_index=False)
     index = newData3['Years']
     plt.xlabel('Year', fontsize=5)
     plt.ylabel('No. of Calories', fontsize=8)
@@ -64,4 +63,7 @@ def third():
     plt.show()
 
 
-first()
+if __name__ == "__main__":
+    first()
+    second()
+    third()
