@@ -1,6 +1,6 @@
 class math:
     def total(i):
-        return sum(i)
+        return i + i
 
     def average(i):
         return i
